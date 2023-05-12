@@ -1,8 +1,7 @@
-from datetime import datetime
 from typing import Optional, List
 from pydantic import BaseModel, Field
-from models.unit import Unit
-from models.location import Location
+from app.models.request.unit import Unit
+from app.models.request.location import Location
 
 
 class Property(BaseModel):
