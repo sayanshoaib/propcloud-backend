@@ -1,6 +1,7 @@
 from datetime import datetime
-from typing import Optional
+from typing import Optional, List
 from pydantic import BaseModel, Field
+from app.models.enums.role import Role
 
 
 class User(BaseModel):
@@ -9,6 +10,7 @@ class User(BaseModel):
     password: str = Field(..., max_length=8)
     full_name: Optional[str] = Field(None, min_length=3, max_length=50)
     disabled: Optional[bool] = Field(False)
+    roles: List[Role]
     created_at: datetime = Field(default_factory=datetime.utcnow)
     updated_at: datetime = Field(default_factory=datetime.utcnow)
 
@@ -20,6 +22,7 @@ class User(BaseModel):
                 "email": "shoaib@gmail.com",
                 "password": "secretpassword",
                 "full_name": "Shoaib Hasan",
+                "roles": ["admin", "agent"],
                 "disabled": False
             }
         }
