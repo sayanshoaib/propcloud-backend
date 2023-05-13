@@ -3,7 +3,7 @@ from pymongo.collection import Collection
 from pymongo.results import DeleteResult, InsertOneResult, UpdateResult
 from typing import List, Optional
 
-from app.models.entitty.location import Location
+from app.models.entity.location import Location
 
 
 class LocationRepository:

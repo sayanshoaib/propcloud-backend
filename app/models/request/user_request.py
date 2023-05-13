@@ -4,7 +4,7 @@ from pydantic import BaseModel, Field
 from app.models.enums.role import Role
 
 
-class UserCreate(BaseModel):
+class UserRequest(BaseModel):
     username: str = Field(..., min_length=3, max_length=50)
     email: str = Field(..., min_length=5, max_length=254)
     password: str = Field(..., max_length=8)

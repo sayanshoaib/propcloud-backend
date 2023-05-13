@@ -2,7 +2,7 @@ from typing import Optional
 from pydantic import BaseModel, Field
 
 
-class Location(BaseModel):
+class LocationRequest(BaseModel):
     address_line_1: str = Field(..., min_length=1, max_length=100)
     address_line_2: Optional[str] = Field(None, max_length=100)
     city: str = Field(..., min_length=1, max_length=50)
