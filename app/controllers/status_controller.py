@@ -1,4 +1,3 @@
-from fastapi import HTTPException
 from fastapi_utils.cbv import cbv
 from app.config.database import *
 
