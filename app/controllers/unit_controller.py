@@ -1,16 +1,16 @@
 from typing import List
 
-from fastapi import APIRouter, Depends, HTTPException
+from fastapi import Depends, HTTPException
+from fastapi_utils.cbv import cbv
 
+from app.controllers.base_controller import BaseController, router
 from app.models.request.unit_request import UnitRequest
 from app.models.entity.unit import Unit
 from app.service.unit_service import UnitService
 
 
-router = APIRouter()
-
-
-class UnitController:
+@cbv(router)
+class UnitController(BaseController):
     def __init__(self, unit_service: UnitService = Depends()):
         self.unit_service = unit_service
 
