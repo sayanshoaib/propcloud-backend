@@ -1,6 +1,9 @@
 from typing import List, Optional
 from pydantic import EmailStr
 from datetime import datetime
+
+from pymongo.database import Database
+
 from app.repository.user_repository import UserRepository
 from app.mapper.user_mapper import *
 
@@ -8,6 +11,10 @@ from app.mapper.user_mapper import *
 class UserService:
     def __init__(self, user_repo: UserRepository):
         self.user_repo = user_repo
+
+    @classmethod
+    def get_instance(self, db: Database):
+        return UserService(UserRepository(db))
 
     async def create_user(self, user_create: UserRequest) -> UserResponse:
         user = map_to_user(user_create)

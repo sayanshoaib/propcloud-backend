@@ -1,14 +1,15 @@
 from bson import ObjectId
-from pymongo.collection import Collection
+from pymongo.collection import Collection, Database
 from pymongo.results import DeleteResult, InsertOneResult, UpdateResult
 from typing import List, Optional
 from pydantic import EmailStr
 from app.models.entity.user import User
+from app.config.database import USER_COLLECTION
 
 
 class UserRepository:
-    def __init__(self, collection: Collection):
-        self.collection = collection
+    def __init__(self, db: Database):
+        self.collection = db[USER_COLLECTION]
 
     async def create_user(self, user: User) -> User:
         user_dict = user.dict()

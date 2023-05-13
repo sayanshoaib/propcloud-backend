@@ -1,12 +1,21 @@
 from pymongo import MongoClient
-from pymongo.collection import Collection
+from pymongo.collection import Database, Collection
 
 
-def db_conn(collection_name: str) -> Collection:
+USER_COLLECTION = "users"
+PROPERTY_COLLECTION = "properties"
+UNIT_COLLECTION = "units"
+LOCATION_COLLECTION = "locations"
+
+
+def db_conn() -> Database:
     client = MongoClient("mongodb://prop-cloud-db:27017/")
     db = client["propcloud_db"]
-    collection = db[collection_name]
-    return collection
+    return db
+
+
+def get_collection(collection_name: str, db: Database) -> Collection:
+    return db[collection_name]
 
 
 def get_server_info() -> dict:
