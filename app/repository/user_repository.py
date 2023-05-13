@@ -3,7 +3,7 @@ from pymongo.collection import Collection
 from pymongo.results import DeleteResult, InsertOneResult, UpdateResult
 from typing import List, Optional
 from pydantic import EmailStr
-from app.models.entitty.user import User
+from app.models.entity.user import User
 
 
 class UserRepository:

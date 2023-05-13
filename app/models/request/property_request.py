@@ -1,22 +1,16 @@
-from beanie import Document
 from typing import Optional, List
-from datetime import datetime
-from app.models.request.unit import Unit
-from app.models.request.location import Location
+from pydantic import BaseModel, Field
+from app.models.request.unit_request import UnitRequest
+from app.models.request.location_request import LocationRequest
 
 
-class Property(Document):
-    name: str
-    description: Optional[str]
-    units: List[Unit]
-    price: Optional[float]
-    location: Location
+class PropertyRequest(BaseModel):
+    name: str = Field(..., min_length=3, max_length=100)
+    description: Optional[str] = Field(None, max_length=500)
+    units: List[UnitRequest] = Field(None, ge=0)
+    price: Optional[float] = Field(None, ge=0)
+    location: LocationRequest
     owner_id: str
-    created_at: datetime
-    updated_at: datetime
-
-    class Collection:
-        name = "properties"
 
     class Config:
         allow_population_by_field_name = True
@@ -32,9 +26,7 @@ class Property(Document):
                         "bathrooms": 1,
                         "monthly_rent": 1500.0,
                         "leased": False,
-                        "property_id": "property_id",
-                        "created_at": "2008-09-15T15:53:00+05:00",
-                        "updated_at": "2008-09-15T15:53:00+05:00"
+                        "property_id": "property_id"
                     },
                     {
                         "unit_number": "A102",
@@ -43,9 +35,7 @@ class Property(Document):
                         "bathrooms": 1,
                         "monthly_rent": 1500.0,
                         "leased": False,
-                        "property_id": "property_id",
-                        "created_at": "2008-09-15T15:53:00+05:00",
-                        "updated_at": "2008-09-15T15:53:00+05:00"
+                        "property_id": "property_id"
                     }
                 ],
                 "price": 250000.0,
@@ -57,12 +47,8 @@ class Property(Document):
                     "zip_code": "94111",
                     "country": "Iceland",
                     "latitude": 37.7749,
-                    "longitude": -122.4194,
-                    "created_at": "2008-09-15T15:53:00+05:00",
-                    "updated_at": "2008-09-15T15:53:00+05:00"
+                    "longitude": -122.4194
                 },
-                "owner_id": "user_id",
-                "created_at": "2008-09-15T15:53:00+05:00",
-                "updated_at": "2008-09-15T15:53:00+05:00"
+                "owner_id": "user_id"
             }
         }

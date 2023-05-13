@@ -2,7 +2,7 @@ from typing import List, Optional
 from pydantic import BaseModel, Field
 
 
-class Unit(BaseModel):
+class UnitRequest(BaseModel):
     unit_number: str = Field(..., min_length=1, max_length=50)
     square_feet: Optional[int] = Field(None, ge=0)
     bedrooms: Optional[int] = Field(None, ge=0)
