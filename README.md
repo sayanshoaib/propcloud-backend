@@ -21,12 +21,13 @@ A step by step series of examples that tell you how to get a development environ
 1. Clone the repository
 
 ```bash
-git clone https://github.com/sayanshoaib/propcloud-backend.git```
+git clone https://github.com/sayanshoaib/propcloud-backend.git
 
 # Build and run the Docker containers
 
 ```bash
-
 cd propcloud-backend
 docker-compose up --build
-```
+
+
+## Access the FastAPI application at http://localhost:8000
