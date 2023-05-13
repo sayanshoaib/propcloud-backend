@@ -25,9 +25,8 @@ git clone https://github.com/sayanshoaib/propcloud-backend.git
 
 # Build and run the Docker containers
 
-```bash
 cd propcloud-backend
-docker-compose up --build
+docker-compose up -d
 
 
 ## Access the FastAPI application at http://localhost:8000
