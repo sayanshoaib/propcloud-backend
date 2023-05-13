@@ -1,5 +1,5 @@
 from fastapi_utils.cbv import cbv
-from app.config.database import *
+from app.config.database import get_server_info
 
 from app.controllers.base_controller import BaseController, router
 
